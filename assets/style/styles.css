@@ -1,3 +1,89 @@
-body{
-    color: red;
+* {
+    margin: 0;
+    padding: 0;
+}
+.wrapper {
+    height: 100vh;
+    width: 100%; 
+    background-color: #A8ADA6;
+    /* display: flex; */
+
+}
+
+header{
+    background: #818580;
+}
+
+.logo {
+    width: 150px;
+    padding: 20px;
+}
+
+
+.form{
+    display: flex;
+}
+
+.btn {
+    display: block;
+}
+
+.search-glass-div{
+    width: 30px;
+}
+
+.search-glass-div img {
+    width: 100%;
+}
+
+
+
+/* klasiu pavadinimai samoningai lietuviski, nes visa tai istrinsiu  */
+
+.spalvu-konteineris{
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 20px;
+
+}
+
+.sp {
+    width: 100px;
+    height: 100px;
+}
+
+.spalvos-1, .spalvos-2, .spalvos-3 {
+    width: 600px;
+    height: 150px;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.spalva-11 {
+    background-color: #4A5859;
+}
+.spalva-12 {
+    background-color: #765442;
+}
+.spalva-13 {
+    background-color: #616B3C;
+}
+.spalva-21 {
+    background-color: #d68c45;
+}
+.spalva-22 {
+    background-color: #8c9daa;
+}
+.spalva-23 {
+    background-color: #AFC0A8;
+}
+.spalva-31 {
+    background-color: #EBE8DB;
+}
+.spalva-32 {
+    background-color: #F2EEE1;
+}
+.spalva-33 {
+    background-color: #FFFFFF;
 }
