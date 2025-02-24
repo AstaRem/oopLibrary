@@ -1,0 +1,50 @@
+classDiagram
+    class Library {
+        - categories: Category[]
+        + getCategories()
+        + addCategory(category: Category)
+    }
+
+    class Category {
+        - id: int
+        - categoryName: string
+        - books: Book[]
+        + getBooksByAuthor(authorName: string): Book[]
+        + getBooksByPriceRange(minPrice: float, maxPrice: float): Book[]
+    }
+
+    class Book {
+        - id: int
+        - title: string
+        - author: string
+        - isbn: string
+        - price: float
+        - description: string
+        - is_checked_out: boolean
+        + checkAvailability(): boolean
+        + checkOut()
+        + checkIn()
+    }
+
+    class Reader {
+        - name: string
+        - reader_id: int
+        - borrowed_books: Book[]
+        + borrowBook(book: Book)
+        + returnBook(book: Book)
+        + getBorrowedBooks(): Book[]
+    }
+
+    class Rating {
+        - id: int
+        - bookId: int
+        - readerId: int
+        - rating: int
+        - comment: string
+    }
+
+    Library --> "1..*" Category : turi
+    Category --> "1..*" Book : turi
+    Reader --> "0..*" Book : skolinasi
+    Book --> "0..*" Rating : turi įvertinimus
+    Rating --> Reader : parašo atsiliepimą

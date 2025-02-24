@@ -1,3 +1,215 @@
-body{
-    color: red;
+
+/* general start*/
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Nunito Sans", serif;
+}
+.wrapper {
+    height: 100%;
+    width: 100%; 
+    background-color: #A8ADA6;
+    /* display: flex; */
+
+}
+/* general end */
+
+/* header start */
+header{
+    background: #818580;
+    display: flex;
+    justify-content: flex-start;
+    
+}
+
+.logo {
+    width: 150px;
+    padding: 20px 20px 10px 20px;
+}
+
+.library-name {
+    color: white;
+    font-weight: 600;
+    font-size: 32px;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.top-nav {
+    width: 100%;
+    margin-left: 120px;
+    display: flex; 
+    align-items: center;
+}
+.top-nav-list {
+    height: 100%;
+    width: 50%;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.top-nav-item {
+    padding: 10px 20px;
+    height: 30px;
+    background-color: #EBE8DB;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.top-nav-list a {
+    display: block;
+    text-decoration: none;
+    color:black;
+
+}
+
+/* header end */
+
+
+/* forms start */
+.form{
+    display: flex;
+    margin:10px;
+}
+
+.btn {
+    display: block;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.search-glass-div{
+    width: 20px;
+}
+
+.search-glass-div img {
+    width: 100%;
+}
+
+.book-search-form {
+    margin-bottom: 20px;
+    background-color: #929690;
+}
+
+.categories-div{
+    display: flex;
+    flex-direction: column;
+    padding:10px;
+}
+
+#categories {
+    height: 100%;
+}
+/* forms end */
+
+/* Books container start*/
+.subtitle{
+font-size: 24px;
+color: white;
+padding: 10px 0;
+margin-left: 20px;
+}
+
+.books-div {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: auto auto auto;
+    margin: 0 20px;
+}
+
+/* one book card */
+
+.one-book-card {
+    /* width: 200px;
+    height: 300px; */
+    display: flex;
+    background-color: #EBE8D8;
+    padding: 20px;
+    border-radius: 7px;
+
+
+}
+.book-img-div {
+    width: 100px;
+}
+
+.book-img-div img {
+    width: 100%;
+}
+
+.book-details-div {
+    margin-left: 20px;
+}
+/* books container end */
+
+/* footer start */
+footer{
+    height: 30px;
+    padding: 30px 20px; 
+    background-color: #929690;
+    
+}
+/* footer end */
+
+/* ------------------------------------------------------------------------ */
+
+
+/* spalvu pasirinkimai */
+/* klasiu pavadinimai samoningai lietuviski, nes visa tai istrinsiu  */
+.spalvu-tekstas {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.spalvu-konteineris{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+    /* padding: 20px; */
+
+}
+
+.sp {
+    width: 100px;
+    height: 100px;
+}
+
+.spalvos-1, .spalvos-2, .spalvos-3 {
+    width: 600px;
+    height: 150px;
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+.spalva-11 {
+    background-color: #4A5859;
+}
+.spalva-12 {
+    background-color: #765442;
+}
+.spalva-13 {
+    background-color: #616B3C;
+}
+.spalva-21 {
+    background-color: #d68c45;
+}
+.spalva-22 {
+    background-color: #8c9daa;
+}
+.spalva-23 {
+    background-color: #AFC0A8;
+}
+.spalva-31 {
+    background-color: #EBE8DB;
+}
+.spalva-32 {
+    background-color: #F2EEE1;
+}
+.spalva-33 {
+    background-color: #FFFFFF;
 }
