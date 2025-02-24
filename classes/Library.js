@@ -9,16 +9,20 @@
 // nauja kategorija kuria Library klase
 class Library {
     #categories = [];
+    #categoryId = 0;
+
     constructor (library){
         this.library = library;
     }
 
     setCategory(category){
-        let newCategory = new Category(category);
+        this.#categoryId += 1;
+        this.id = this.#categoryId;
+        let newCategory = new Category(this.id, category);
         this.#categories.push(newCategory);
     }
 
-    getCategories(categories){
+    getCategories(){
         return this.#categories;
     }
 
@@ -26,9 +30,10 @@ class Library {
 
 
 
-
+// testavimui:
 class Category{
-    constructor(categoryName){
+    constructor(id, categoryName){
+        this.id = id;
         this.category = categoryName;
     }
 }
@@ -38,6 +43,8 @@ let pietinioBiblioteka = new Library("pietinio biblioteka")
 console.log(pietinioBiblioteka);
 pietinioBiblioteka.setCategory("poezija");
 pietinioBiblioteka.setCategory("grozine literatura");
+pietinioBiblioteka.setCategory("keliones");
+
 
 let kategorijos = pietinioBiblioteka.getCategories();
 console.log(kategorijos);
