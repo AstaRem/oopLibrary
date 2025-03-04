@@ -38,9 +38,11 @@
 
         <main>
             <div class="search-forms">
+<!-- search for an existing book according parameters - start -->
+
                 <form  class="book-search-form form">
                     <input type="text" id="search-book-input" data-book-input-form placeholder="Title/author/ISBN">
-                    
+<!-- categories- start -->
                     <div class="categories-div">
 
                         <label for="categories">Choose the category <br>OR<br> Hold down the Ctrl/Cmd button to select multiple categories options:</label>
@@ -59,12 +61,19 @@
                         </select>
     
                     </div>
-
+<!-- categories - end -->
+ <!-- button for book search - start -->
                     <button class="search-btn btn">Search in Library</button>
                     <div class="search-glass-div">
                         <img src="./assets/img/magnifying-glass-black.png">
                     </div>
+ <!-- button for book search - end -->
+
                 </form>
+
+<!-- search for an existing book according parameters - end -->
+
+<!-- find a book in database/api and add to library - start  -->
 
                 <form  class="add-book-form form">
                     <input type="text" id="add-book-input" data-book-add-form placeholder="Title/author/ISBN">
@@ -74,7 +83,9 @@
                         <img src="./assets/img/magnifying-glass-black.png">
                     </div> -->
                 </form>
+<!-- find a book in database/api and add to library - end  -->
 
+<!-- remove an existing book from library -start -->
                 <form  class="remove-book-form form">
                     <input type="text" id="book-remove" data-book-remove-form placeholder="Title/author/ISBN">
                     <button class="find-btn btn">Find book in Library</button>
@@ -83,8 +94,10 @@
                         <img src="./assets/img/magnifying-glass-black.png">
                     </div> -->
                 </form>
+<!-- remove an existing book from library - end -->
+              
         </div>
-
+<!-- display books start  -->
         <h2 class="subtitle">BOOKS</h2>
         <div class="books-div">
             <div class="one-book-card">
@@ -183,7 +196,7 @@
 
 
         </div>
-
+<!-- display books end -->
 
 
 
