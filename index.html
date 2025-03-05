@@ -14,12 +14,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
     <!-- fonts end -->
-    <script src="app.js" defer></script>
-    <script src="./classes/Library.js" defer></script>
+    <script type="module" src="app.js" defer></script>
 
 </head>
 <body>
      <div class="wrapper">
+
 
         <header>
             <div class="logo-div">
@@ -40,10 +40,10 @@
             <div class="search-forms">
 <!-- search for an existing book according parameters - start -->
 
-                <form  class="book-search-form form">
-                    <input type="text" id="search-book-input" data-book-input-form placeholder="Title/author/ISBN">
+                <!-- <form  class="book-search-form form">
+                    <input type="text" id="search-book-input" data-book-input-form placeholder="Title/author/ISBN"> -->
 <!-- categories- start -->
-                    <div class="categories-div">
+                    <!-- <div class="categories-div">
 
                         <label for="categories">Choose the category <br>OR<br> Hold down the Ctrl/Cmd button to select multiple categories options:</label>
     
@@ -60,25 +60,59 @@
                             <option value="Young adult">Young adult</option>
                         </select>
     
-                    </div>
+                    </div> -->
 <!-- categories - end -->
  <!-- button for book search - start -->
-                    <button class="search-btn btn">Search in Library</button>
-                    <div class="search-glass-div">
+                    <!-- <button class="search-btn btn">Search in Library</button> -->
+                    <!-- <div class="search-glass-div">
                         <img src="./assets/img/magnifying-glass-black.png">
-                    </div>
+                    </div> -->
  <!-- button for book search - end -->
 
-                </form>
+                <!-- </form> -->
 
 <!-- search for an existing book according parameters - end -->
 
 <!-- find a book in database/api and add to library - start  -->
+                <h2>Add new category:</h2>
+                <form  class="add-category-form form">
+                    <div class="new-category-input">
+                        <input type="text" id="add-book-id" placeholder="Add category">
+                    </div>
+                    <button class="add-btn btn">Click to add <br>new category</button>
 
+
+
+                <h2>Add new book details:</h2>
                 <form  class="add-book-form form">
-                    <input type="text" id="add-book-input" data-book-add-form placeholder="Title/author/ISBN">
-                    <button class="find-btn btn">Find new book</button>
-                    <button class="add-btn btn">Add new book to Library</button>
+                    <div class="new-book-input">
+
+                    <div class="categories-div">
+                        <label for="categories">Choose existing category:</label>
+                        <select id="categories" name="categories" multiple>
+                            <!-- <option value="All">All</option> -->
+                            <option value="Art">Art</option>
+                            <option value="Biography">Biography</option>
+                            <option value="Children">Children</option>
+                            <option value="Fiction">Fiction</option>
+                            <option value="Learning">Learning</option>
+                            <option value="Non-fiction">Non-fiction</option>
+                            <option value="Poetry">Poetry</option>
+                            <option value="Travel">Travel</option>
+                            <option value="Young adult">Young adult</option>
+                        </select>
+                    </div>
+
+
+
+                        <input type="text" id="add-book-id" placeholder="Id">
+                        <input type="text" id="add-book-title" placeholder="Add title">
+                        <input type="text" id="add-book-author" placeholder="Add author">
+                        <input type="text" id="add-book-isbn" placeholder="Add ISBN">
+                        <input type="number" id="add-book-price" placeholder="Add Price">
+                        <input type="text" id="add-book-description" placeholder="Add decription">    
+                    </div>
+                    <button class="add-btn btn" data-add-to-library>Click to add <br>new book <br> to Library</button>
                     <!-- <div class="search-glass-div">
                         <img src="./assets/img/magnifying-glass-black.png">
                     </div> -->
@@ -86,6 +120,7 @@
 <!-- find a book in database/api and add to library - end  -->
 
 <!-- remove an existing book from library -start -->
+                <h2>Remove a book:</h2>
                 <form  class="remove-book-form form">
                     <input type="text" id="book-remove" data-book-remove-form placeholder="Title/author/ISBN">
                     <button class="find-btn btn">Find book in Library</button>

@@ -75,6 +75,63 @@ class Rating {
     }
 }
 
+// Rating.js
+
+class Rating {
+    static counter = 0;
+  
+    constructor(bookId, readerId, rating, comment) {
+      // Assign a unique id using a static counter
+      this.id = ++Rating.counter;
+      this._bookId = bookId;
+      this._readerId = readerId;
+      this._rating = rating;
+      this._comment = comment;
+    }
+  
+    // Getter and setter for bookId
+    get bookId() {
+      return this._bookId;
+    }
+    
+    set bookId(newBookId) {
+      this._bookId = newBookId;
+    }
+  
+    // Getter and setter for readerId
+    get readerId() {
+      return this._readerId;
+    }
+    
+    set readerId(newReaderId) {
+      this._readerId = newReaderId;
+    }
+  
+    // Getter and setter for rating
+    get rating() {
+      return this._rating;
+    }
+    
+    set rating(newRating) {
+      if (newRating < 1 || newRating > 5) {
+        throw new Error('Rating must be between 1 and 5.');
+      }
+      this._rating = newRating;
+    }
+  
+    // Getter and setter for comment
+    get comment() {
+      return this._comment;
+    }
+    
+    set comment(newComment) {
+      this._comment = newComment;
+    }
+  }
+
+  export default Rating;
+  
+
 // --- Testavimas ---
 //const review1 = new Rating(202, 5, 4, "Labai gera knyga!");
 //const review2 = new Rating(203, 8, 3, "Vidutiniška.");
