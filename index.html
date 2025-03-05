@@ -23,82 +23,57 @@
 
         <header>
             <div class="logo-div">
-                <img class="logo" src="./assets/img/logo.svg" alt="Library logo round">
-                <p class="library-name">Our Library</p>
+              <img class="logo" src="./assets/img/logo.svg" alt="Library logo round">
+              <p class="library-name">Our Library</p>
             </div>
-
             <nav class="top-nav">
-                <ul class="top-nav-list">
-                    <li class="top-nav-item"><a href="#">Home - Books</a></li>
-                    <li class="top-nav-item"><a href="#">Readers</a></li>
-                    <li class="top-nav-item"><a href="#">Books on Loan</a></li>
-                </ul>
+              <ul class="top-nav-list">
+                <li class="top-nav-item"><a href="#">Add Books and Categories</a></li>
+                <li class="top-nav-item"><a href="#">Books in stock</a></li>
+                <li class="top-nav-item"><a href="#">Readers</a></li>
+                <li class="top-nav-item"><a href="#">Books on Loan</a></li>
+              </ul>
             </nav>
-        </header>
-
+          </header>
+          
         <div class="wrapper">
-        <main>
-            <div id="library">
 
-                <!-- form to add a book -->
-                <form  id="add-book-form">
-                    <div class="new-book-input">
-
-                    <div class="categories-div">
-                        <label for="categories">Choose existing category:</label>
+            <main>
+                <div id="library">
+                  <!-- Container for both forms -->
+                  <div class="form-container">
+                    <!-- Add Category Form -->
+                    <form id="add-category-form" class="form form-category">
+                      <label for="add-category-name">Add new category:</label>
+                      <input type="text" id="add-category-name" placeholder="Enter new category" required>
+                      <button type="submit" class="btn">Add Category</button>
+                    </form>
+                    
+                    <!-- Add Book Form -->
+                    <form id="add-book-form" class="form form-book">
+                      <div class="categories-div">
+                        <label for="categories">Or choose the existing category:</label>
                         <select id="categories" name="book-category" multiple>
-                            <!-- <option value="Art">Art</option>
-                            <option value="Biography">Biography</option>
-                            <option value="Children">Children</option>
-                            <option value="Fiction">Fiction</option>
-                            <option value="Learning">Learning</option>
-                            <option value="Non-fiction">Non-fiction</option>
-                            <option value="Poetry">Poetry</option>
-                            <option value="Travel">Travel</option>
-                            <option value="Young adult">Young adult</option> -->
-
-                            
+                          <!-- Options populated via JS -->
                         </select>
-                    </div>
-
-                        <input type="text" id="add-book-title" placeholder="Add title">
-                        <input type="text" id="add-book-author" placeholder="Add author">
-                        <input type="text" id="add-book-isbn" placeholder="Add ISBN">
-                        <input type="number" id="add-book-price" placeholder="Add Price">
-                        <input type="text" id="add-book-description" placeholder="Add decription">    
-                    </div>
-                    <button type="submit" value="submit" class="add-btn btn" data-add-to-library>Click to add <br>new book <br> to Library</button>
-                </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                      </div>
+                      <div class="book-inputs">
+                        <input type="text" id="add-book-title" placeholder="Add title" required>
+                        <input type="text" id="add-book-author" placeholder="Add author" required>
+                        <input type="text" id="add-book-isbn" placeholder="Add ISBN" required>
+                        <input type="number" id="add-book-price" placeholder="Add Price" required>
+                        <input type="text" id="add-book-description" placeholder="Add description" required>    
+                      </div>
+                      <button type="submit" class="add-btn btn" data-add-to-library>
+                        Click to add new book to Library
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </main>
+              
 
             </div>
-
-        </main>
-
-
-
         <!-- klasiu pavadinimai samoningai lietuviski, nes visa tai istrinsiu -->
         <div >
             <p class="spalvu-tekstas">Čia įdėjau tik galimų spalvų pavyzdžius, kad nereikėtų ieškoti</p>

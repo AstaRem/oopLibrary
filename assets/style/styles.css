@@ -3,6 +3,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     font-family: "Nunito Sans", serif;
 }
 .wrapper {
@@ -16,116 +17,159 @@
 /* general end */
 
 /* header start */
-header{
+
+/* Header styling */
+header {
     background: #818580;
     display: flex;
-    justify-content: flex-start;
-    
-}
-
-.logo {
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+  }
+  
+  /* Logo and library name container */
+  .logo-div {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
     width: 150px;
-    padding: 20px 20px 10px 20px;
-}
-
-.library-name {
+    margin-right: 20px;
+  }
+  
+  .library-name {
     color: white;
     font-weight: 600;
     font-size: 32px;
-    text-align: center;
-    padding-bottom: 10px;
-}
-
-.top-nav {
-    width: 100%;
-    margin-left: 120px;
-    display: flex; 
-    align-items: center;
-}
-.top-nav-list {
-    height: 100%;
-    width: 50%;
+    margin: 0;
+  }
+  
+  /* Navigation styling */
+  .top-nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .top-nav-list {
     list-style-type: none;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-
-}
-
-.top-nav-item {
-    padding: 10px 20px;
-    height: 30px;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .top-nav-item {
     background-color: #EBE8DB;
     border-radius: 7px;
+    padding: 10px 20px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.top-nav-list a {
-    display: block;
+    align-items: center;
+  }
+  
+  .top-nav-item a {
     text-decoration: none;
-    color:black;
-
-}
-
+    color: black;
+    font-weight: 500;
+    display: block;
+  }
+  
 /* header end */
 
 
-/* forms start */
-.form{
-    display: flex;
-    margin:10px;
-}
-
-.new-book-input {
+/* main start */
+/* General container styling */
+#library {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Form container to separate the two forms nicely */
+  .form-container {
     display: flex;
     flex-direction: column;
-    width: 80%;
-}
-
-.btn {
-    display: block;
-    margin-left: 5px;
-    margin-right: 5px;
-    border-radius: 7px;
-    border: none;
-}
-
-.btn:hover{
-    cursor: pointer;
-}
-
-.add-btn {
-    padding: 0 20px;
-}
-
-#book-remove {
-    width: 80%;
-}
-
-.search-glass-div{
-    width: 20px;
-}
-
-.search-glass-div img {
+    gap: 20px;
+  }
+  
+  /* Basic form styling */
+  .form {
+    background: #ebe8db;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  /* Specific styling for category form if needed */
+  .form-category {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  /* Styling for book form */
+  .form-book {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Input and select styling */
+  input[type="text"],
+  input[type="number"],
+  select {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
     width: 100%;
-}
-
-.book-search-form {
-    margin-bottom: 20px;
-    background-color: #929690;
-}
-
-.categories-div{
+    box-sizing: border-box;
+  }
+  
+  /* Label styling */
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  /* Button styling */
+  .btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 7px;
+    background-color: #4a5859;
+    color: white;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #616b3c;
+    cursor: pointer;
+  }
+  
+  /* Additional styling for the add-btn if needed */
+  .add-btn {
+    align-self: flex-start;
+  }
+  
+  /* Arrange book inputs in a column with spacing */
+  .book-inputs {
     display: flex;
     flex-direction: column;
-    /* padding:10px; */
-}
+    gap: 10px;
+  }
+  
+  /* Categories dropdown styling */
+  .categories-div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  /*main end  */
 
-#categories {
-    height: 100%;
-}
-/* forms end */
+
 
 /* Books container start*/
 .subtitle{
@@ -173,8 +217,8 @@ footer{
     height: 30px;
     padding: 30px 20px ; 
     background-color: #929690;
-    position: absolute;
-    bottom: 30px;
+    /* position: absolute;
+    bottom: 30px; */
     
 }
 /* footer end */
@@ -185,14 +229,17 @@ footer{
 /* spalvu pasirinkimai */
 /* klasiu pavadinimai samoningai lietuviski, nes visa tai istrinsiu  */
 .spalvu-tekstas {
-    margin-top: 20px;
-    margin-left: 20px;
+    padding-top: 20px;
+    padding-left: 20px;
+    background-color: #A8ADA6;
+
 }
 
 .spalvu-konteineris{
-    margin-top: 10px;
+    padding-top: 10px;
     display: flex;
     justify-content: end;
+    background-color: #A8ADA6;
     /* padding: 20px; */
 
 }

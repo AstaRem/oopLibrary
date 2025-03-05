@@ -47,7 +47,7 @@ function handleAddBook(event) {
     const isbn = document.getElementById('add-book-isbn').value;
     const price = parseFloat(document.getElementById('add-book-price').value);
     const description = document.getElementById('add-book-description').value;
-    const categoryId = document.getElementById('book-category').value; // Assume this returns the id of the selected category
+    const categoryId = document.getElementById('categories').value; // Assume this returns the id of the selected category
 
     // Create a new Book instance
     const newBook = new Book(title, author, isbn, price, description);
@@ -71,7 +71,7 @@ function handleAddBook(event) {
     event.target.reset();
   }
   
-  // Attach the event listener to your form
+  // Attach the event listener to our form
   const addBookForm = document.getElementById('add-book-form');
   if (addBookForm) {
 
@@ -81,15 +81,16 @@ function handleAddBook(event) {
 
 
   function populateCategoriesDropdown() {
-    const dropdown = document.getElementById('categories');
-    // Clear any existing options
+    const dropdown = document.getElementById('categories'); // make sure the select element has id="categories"
+    if (!dropdown) return;
+    
+    // Clear existing options
     dropdown.innerHTML = '';
-  
+    
     // Create an option for each category in ourLibrary
     ourLibrary.getCategories().forEach(category => {
       const option = document.createElement('option');
-      option.setAttribute('id','book-category');
-      option.value = category.id; // Use the category's id as the value
+      option.value = category.id; // use category id as the option's value
       option.textContent = category.categoryName;
       dropdown.appendChild(option);
     });
@@ -97,6 +98,48 @@ function handleAddBook(event) {
   
   // Call this function after you add your categories to the library
   populateCategoriesDropdown();
+
+
+
+  // Handle new category addition
+function handleAddCategory(event) {
+    event.preventDefault();
+    
+    // Get the new category name and trim whitespace
+    const newCategoryName = document.getElementById('add-category-name').value.trim();
+    
+    if (!newCategoryName) {
+      alert('Please enter a category name.');
+      return;
+    }
+    
+    // Check if a category with the same name already exists (case-insensitive)
+    const categoryExists = ourLibrary.getCategories().some(cat =>
+      cat.categoryName.toLowerCase() === newCategoryName.toLowerCase()
+    );
+    
+    if (categoryExists) {
+      alert(`Category "${newCategoryName}" already exists!`);
+      return;
+    }
+    
+    // Create the new Category and add it to ourLibrary
+    const newCategory = new Category(newCategoryName);
+    ourLibrary.addCategory(newCategory);
+    alert(`Category "${newCategoryName}" added successfully!`);
+    
+    // Optionally, update the categories dropdown (if using dynamic dropdown options)
+    populateCategoriesDropdown();
+    
+    // Clear the form
+    event.target.reset();
+  }
+  
+  // Attach event listener to the category form
+  const addCategoryForm = document.getElementById('add-category-form');
+  if (addCategoryForm) {
+    addCategoryForm.addEventListener('submit', handleAddCategory);
+  }
 
 
 //   addBookForm.addEventListener('submit', () => console.log('button is clicked'));
