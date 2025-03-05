@@ -10,72 +10,71 @@
 // Metodai:
 // Geteriai, seteriai
 
-class Rating {
-    static COUNTER = 0; 
-    static COMMENTS = []; 
-    static LAST_ID = 0;
+// class Rating {
+//     static COUNTER = 0; 
+//     static COMMENTS = []; 
+//     static LAST_ID = 0;
 
-    constructor(bookId, readerId, rating, comment) {
-        this.id = Rating.generateUniqueId(); 
-        this.bookId = bookId;
-        this.readerId = readerId;
-        this.setRating(rating);
-        this.comment = comment || "Komentaro nėra";  
+//     constructor(bookId, readerId, rating, comment) {
+//         this.id = Rating.generateUniqueId(); 
+//         this.bookId = bookId;
+//         this.readerId = readerId;
+//         this.setRating(rating);
+//         this.comment = comment || "Komentaro nėra";  
 
-        Rating.COUNTER++; 
-        Rating.COMMENTS.push(this.comment);
-    }
+//         Rating.COUNTER++; 
+//         Rating.COMMENTS.push(this.comment);
+//     }
 
-    // 📌 Get'eriai
-    getId(){ 
-        return this.id; 
-    }
-    getBookId(){ 
-        return this.bookId;
-     }
-    getReaderId(){ 
-        return this.readerId; 
-    }
-    getRating(){ 
-        return this.rating;
-    }
-    getComment(){ 
-        return this.comment; 
-    }
+//     // 📌 Get'eriai
+//     getId(){ 
+//         return this.id; 
+//     }
+//     getBookId(){ 
+//         return this.bookId;
+//      }
+//     getReaderId(){ 
+//         return this.readerId; 
+//     }
+//     getRating(){ 
+//         return this.rating;
+//     }
+//     getComment(){ 
+//         return this.comment; 
+//     }
 
-    // 📌 Set'eriai
-    setBookId(bookId){ 
-        this.bookId = bookId; 
-    }
-    setReaderId(readerId) { 
-        this.readerId = readerId;
-     }
-    setRating(rating) {
-        if (rating >= 1 && rating <= 5) {
-            this.rating = rating;
-        } else {
-            console.log("Įvertinimas turi būti tarp 1 ir 5.");
-        }
-    }
-    setComment(comment) { 
-        this.comment = comment || "Komentaro nėra"; 
-    }
+//     // 📌 Set'eriai
+//     setBookId(bookId){ 
+//         this.bookId = bookId; 
+//     }
+//     setReaderId(readerId) { 
+//         this.readerId = readerId;
+//      }
+//     setRating(rating) {
+//         if (rating >= 1 && rating <= 5) {
+//             this.rating = rating;
+//         } else {
+//             console.log("Įvertinimas turi būti tarp 1 ir 5.");
+//         }
+//     }
+//     setComment(comment) { 
+//         this.comment = comment || "Komentaro nėra"; 
+//     }
 
-    static generateUniqueId() {
-        return ++Rating.LAST_ID;
-    }
+//     static generateUniqueId() {
+//         return ++Rating.LAST_ID;
+//     }
 
-    static getCounter() {
-        return Rating.COUNTER;
-    }
+//     static getCounter() {
+//         return Rating.COUNTER;
+//     }
 
 
-    static getAllComments() {
-        return Rating.COMMENTS;
-    }
-}
+//     static getAllComments() {
+//         return Rating.COMMENTS;
+//     }
+// }
 
-// Rating.js
 
 class Rating {
     static counter = 0;
@@ -142,5 +141,5 @@ class Rating {
 //console.log("Atsiliepimas 3 ID:", review3.getId());
 
 //console.log("Viso sukurta atsiliepimų:", Rating.getCounter());
-c//onsole.log("Visi komentarai:", Rating.getAllComments());
+//console.log("Visi komentarai:", Rating.getAllComments());
 

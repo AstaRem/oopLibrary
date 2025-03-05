@@ -6,10 +6,11 @@
     font-family: "Nunito Sans", serif;
 }
 .wrapper {
-    height: 100%;
+    height: 100vh;
     width: 100%; 
     background-color: #A8ADA6;
-    /* display: flex; */
+    display: flex;
+    flex-direction: column;
 
 }
 /* general end */
@@ -168,9 +169,12 @@ margin-left: 20px;
 
 /* footer start */
 footer{
+    width: 100%;
     height: 30px;
-    padding: 30px 20px; 
+    padding: 30px 20px ; 
     background-color: #929690;
+    position: absolute;
+    bottom: 30px;
     
 }
 /* footer end */
@@ -188,7 +192,7 @@ footer{
 .spalvu-konteineris{
     margin-top: 10px;
     display: flex;
-    justify-content: space-around;
+    justify-content: end;
     /* padding: 20px; */
 
 }

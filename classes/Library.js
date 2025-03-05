@@ -6,33 +6,34 @@
 // Geteriai, seteriai
 
 import Category from './Category.js';
-import Reader from './Reader.js';
 
 class Library {
-    constructor() {
+    constructor(library) {
+        this._library = library;
       // Array to store Category objects
-      this.categories = [];
-      this.readers =[];
+      this._categories = [];
+    // Array to store Reader objects
+      this._readers =[];
     }
   
     // Method to add a new Category to the library
     addCategory(category) {
-      this.categories.push(category);
+      this._categories.push(category);
     }
 
     // Method to add a new Reader to the library
     addReader(reader) {
-      this.readers.push(reader);
+      this._readers.push(reader);
     }
 
   
     // Method to retrieve all categories
     getCategories() {
-      return this.categories;
+      return this._categories;
     }
 
     getReaders(){
-        return this.readers;
+        return this._readers;
     }
   
     // Example method: Generate HTML to display the library's categories and books.
@@ -40,7 +41,7 @@ class Library {
     generateHTML() {
       let htmlContent = '';
   
-      this.categories.forEach(category => {
+      this._categories.forEach(category => {
         htmlContent += `<div class="category">
                           <h2>${category.categoryName}</h2>
                           <ul>`;

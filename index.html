@@ -36,62 +36,18 @@
             </nav>
         </header>
 
+        <div class="wrapper">
         <main>
-            <div class="search-forms">
-<!-- search for an existing book according parameters - start -->
+            <div id="library">
 
-                <!-- <form  class="book-search-form form">
-                    <input type="text" id="search-book-input" data-book-input-form placeholder="Title/author/ISBN"> -->
-<!-- categories- start -->
-                    <!-- <div class="categories-div">
-
-                        <label for="categories">Choose the category <br>OR<br> Hold down the Ctrl/Cmd button to select multiple categories options:</label>
-    
-                        <select id="categories" name="categories" multiple>
-                            <option value="All">All</option>
-                            <option value="Art">Art</option>
-                            <option value="Biography">Biography</option>
-                            <option value="Children">Children</option>
-                            <option value="Fiction">Fiction</option>
-                            <option value="Learning">Learning</option>
-                            <option value="Non-fiction">Non-fiction</option>
-                            <option value="Poetry">Poetry</option>
-                            <option value="Travel">Travel</option>
-                            <option value="Young adult">Young adult</option>
-                        </select>
-    
-                    </div> -->
-<!-- categories - end -->
- <!-- button for book search - start -->
-                    <!-- <button class="search-btn btn">Search in Library</button> -->
-                    <!-- <div class="search-glass-div">
-                        <img src="./assets/img/magnifying-glass-black.png">
-                    </div> -->
- <!-- button for book search - end -->
-
-                <!-- </form> -->
-
-<!-- search for an existing book according parameters - end -->
-
-<!-- find a book in database/api and add to library - start  -->
-                <h2>Add new category:</h2>
-                <form  class="add-category-form form">
-                    <div class="new-category-input">
-                        <input type="text" id="add-book-id" placeholder="Add category">
-                    </div>
-                    <button class="add-btn btn">Click to add <br>new category</button>
-
-
-
-                <h2>Add new book details:</h2>
-                <form  class="add-book-form form">
+                <!-- form to add a book -->
+                <form  id="add-book-form">
                     <div class="new-book-input">
 
                     <div class="categories-div">
                         <label for="categories">Choose existing category:</label>
-                        <select id="categories" name="categories" multiple>
-                            <!-- <option value="All">All</option> -->
-                            <option value="Art">Art</option>
+                        <select id="categories" name="book-category" multiple>
+                            <!-- <option value="Art">Art</option>
                             <option value="Biography">Biography</option>
                             <option value="Children">Children</option>
                             <option value="Fiction">Fiction</option>
@@ -99,174 +55,78 @@
                             <option value="Non-fiction">Non-fiction</option>
                             <option value="Poetry">Poetry</option>
                             <option value="Travel">Travel</option>
-                            <option value="Young adult">Young adult</option>
+                            <option value="Young adult">Young adult</option> -->
+
+                            
                         </select>
                     </div>
 
-
-
-                        <input type="text" id="add-book-id" placeholder="Id">
                         <input type="text" id="add-book-title" placeholder="Add title">
                         <input type="text" id="add-book-author" placeholder="Add author">
                         <input type="text" id="add-book-isbn" placeholder="Add ISBN">
                         <input type="number" id="add-book-price" placeholder="Add Price">
                         <input type="text" id="add-book-description" placeholder="Add decription">    
                     </div>
-                    <button class="add-btn btn" data-add-to-library>Click to add <br>new book <br> to Library</button>
-                    <!-- <div class="search-glass-div">
-                        <img src="./assets/img/magnifying-glass-black.png">
-                    </div> -->
+                    <button type="submit" value="submit" class="add-btn btn" data-add-to-library>Click to add <br>new book <br> to Library</button>
                 </form>
-<!-- find a book in database/api and add to library - end  -->
-
-<!-- remove an existing book from library -start -->
-                <h2>Remove a book:</h2>
-                <form  class="remove-book-form form">
-                    <input type="text" id="book-remove" data-book-remove-form placeholder="Title/author/ISBN">
-                    <button class="find-btn btn">Find book in Library</button>
-                    <button class="remove-btn btn">Remove from Library</button>
-                    <!-- <div class="search-glass-div">
-                        <img src="./assets/img/magnifying-glass-black.png">
-                    </div> -->
-                </form>
-<!-- remove an existing book from library - end -->
-              
-        </div>
-<!-- display books start  -->
-        <h2 class="subtitle">BOOKS</h2>
-        <div class="books-div">
-            <div class="one-book-card">
-                <div class="book-img-div">
-                    <img src="./assets/img/book-cover-mock.png" alt="book cover image" data-image>
-                </div>
-                <div class="book-details-div">
-                    <div data-title>Pavadinimas</div>
-                    <div data-author>Autorius</div>
-                    <div data-isbn>ISBN</div>
-                    <div data-price>Kaina</div>
-                    <div data-description>Aprašymas: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum eius ducimus nemo et, quidem, amet ut cumque at dolorum libero dolor aut voluptate! Velit quas harum in rem animi deserunt.</div>
-                    <div >Ar knyga pasiskolinta: &nbsp;<span data-is-checked-out>Taip</span></div>
-                </div>
-            </div>
-
-            <div class="one-book-card">
-                <div class="book-img-div">
-                    <img src="./assets/img/book-cover-mock.png" alt="book cover image" data-image>
-                </div>
-                <div class="book-details-div">
-                    <div data-title>Pavadinimas</div>
-                    <div data-author>Autorius</div>
-                    <div data-isbn>ISBN</div>
-                    <div data-price>Kaina</div>
-                    <div data-description>Aprašymas: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum eius ducimus nemo et, quidem, amet ut cumque at dolorum libero dolor aut voluptate! Velit quas harum in rem animi deserunt.</div>
-                    <div >Ar knyga pasiskolinta: &nbsp;<span data-is-checked-out>Taip</span></div>
-                </div>
-            </div>
-
-            <div class="one-book-card">
-                <div class="book-img-div">
-                    <img src="./assets/img/book-cover-mock.png" alt="book cover image" data-image>
-                </div>
-                <div class="book-details-div">
-                    <div data-title>Pavadinimas</div>
-                    <div data-author>Autorius</div>
-                    <div data-isbn>ISBN</div>
-                    <div data-price>Kaina</div>
-                    <div data-description>Aprašymas: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum eius ducimus nemo et, quidem, amet ut cumque at dolorum libero dolor aut voluptate! Velit quas harum in rem animi deserunt.</div>
-                    <div >Ar knyga pasiskolinta: &nbsp;<span data-is-checked-out>Taip</span></div>
-                </div>
-            </div>
-            <div class="one-book-card">
-                <div class="book-img-div">
-                    <img src="./assets/img/book-cover-mock.png" alt="book cover image" data-image>
-                </div>
-                <div class="book-details-div">
-                    <div data-title>Pavadinimas</div>
-                    <div data-author>Autorius</div>
-                    <div data-isbn>ISBN</div>
-                    <div data-price>Kaina</div>
-                    <div data-description>Aprašymas: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum eius ducimus nemo et, quidem, amet ut cumque at dolorum libero dolor aut voluptate! Velit quas harum in rem animi deserunt.</div>
-                    <div >Ar knyga pasiskolinta: &nbsp;<span data-is-checked-out>Taip</span></div>
-                </div>
-            </div>
-            <div class="one-book-card">
-                <div class="book-img-div">
-                    <img src="./assets/img/book-cover-mock.png" alt="book cover image" data-image>
-                </div>
-                <div class="book-details-div">
-                    <div data-title>Pavadinimas</div>
-                    <div data-author>Autorius</div>
-                    <div data-isbn>ISBN</div>
-                    <div data-price>Kaina</div>
-                    <div data-description>Aprašymas: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum eius ducimus nemo et, quidem, amet ut cumque at dolorum libero dolor aut voluptate! Velit quas harum in rem animi deserunt.</div>
-                    <div >Ar knyga pasiskolinta: &nbsp;<span data-is-checked-out>Taip</span></div>
-                </div>
-            </div>
-            <div class="one-book-card">
-                <div class="book-img-div">
-                    <img src="./assets/img/book-cover-mock.png" alt="book cover image" data-image>
-                </div>
-                <div class="book-details-div">
-                    <div data-title>Pavadinimas</div>
-                    <div data-author>Autorius</div>
-                    <div data-isbn>ISBN</div>
-                    <div data-price>Kaina</div>
-                    <div data-description>Aprašymas: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum eius ducimus nemo et, quidem, amet ut cumque at dolorum libero dolor aut voluptate! Velit quas harum in rem animi deserunt.</div>
-                    <div >Ar knyga pasiskolinta: &nbsp;<span data-is-checked-out>Taip</span></div>
-                </div>
-            </div>
-            <div class="one-book-card">
-                <div class="book-img-div">
-                    <img src="./assets/img/book-cover-mock.png" alt="book cover image" data-image>
-                </div>
-                <div class="book-details-div">
-                    <div data-title>Pavadinimas</div>
-                    <div data-author>Autorius</div>
-                    <div data-isbn>ISBN</div>
-                    <div data-price>Kaina</div>
-                    <div data-description>Aprašymas: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum eius ducimus nemo et, quidem, amet ut cumque at dolorum libero dolor aut voluptate! Velit quas harum in rem animi deserunt.</div>
-                    <div >Ar knyga pasiskolinta: &nbsp;<span data-is-checked-out>Taip</span></div>
-                </div>
-            </div>
 
 
-        </div>
-<!-- display books end -->
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
 
         </main>
 
 
 
-
         <!-- klasiu pavadinimai samoningai lietuviski, nes visa tai istrinsiu -->
-         <p class="spalvu-tekstas">Čia įdėjau tik galimų spalvų pavyzdžius, kad nereikėtų ieškoti</p>
-        <div class="spalvu-konteineris">
-            <div class="spalvos-1">
-                <div class="spalva-11 sp"></div>
-                <div class="spalva-12 sp"></div>
-                <div class="spalva-13 sp"></div>
+        <div >
+            <p class="spalvu-tekstas">Čia įdėjau tik galimų spalvų pavyzdžius, kad nereikėtų ieškoti</p>
+           <div class="spalvu-konteineris">
+               <div class="spalvos-1">
+                   <div class="spalva-11 sp"></div>
+                   <div class="spalva-12 sp"></div>
+                   <div class="spalva-13 sp"></div>
+               </div>
+   
+               <div class="spalvos-2">
+                   <div class="spalva-21 sp"></div>
+                   <div class="spalva-22 sp"></div>
+                   <div class="spalva-23 sp"></div>
+               </div>
+   
+               <div class="spalvos-3">
+                   <div class="spalva-31 sp"></div>
+                   <div class="spalva-32 sp"></div>
+                   <div class="spalva-33 sp"></div>
+               </div>
             </div>
+   
+     
 
-            <div class="spalvos-2">
-                <div class="spalva-21 sp"></div>
-                <div class="spalva-22 sp"></div>
-                <div class="spalva-23 sp"></div>
-            </div>
-
-            <div class="spalvos-3">
-                <div class="spalva-31 sp"></div>
-                <div class="spalva-32 sp"></div>
-                <div class="spalva-33 sp"></div>
-            </div>
-         </div>
-
-     </div>
-
-     <footer>
-        <p>&copy;  Arnas Jankūnas, Asta Remeikienė, Linas Morkūnas, Robertas Tiliūnas, 2025.</p>
-     </footer>
-    
+            <footer>
+                <p>&copy;  Arnas Jankūnas, Asta Remeikienė, Linas Morkūnas, Robertas Tiliūnas, 2025.</p>
+            </footer>
+        </div>
 </body>
 </html>
