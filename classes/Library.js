@@ -13,7 +13,7 @@ class Library {
       // Array to store Category objects
       this._categories = [];
     // Array to store Reader objects
-      this._readers =[];
+      this.readers =[];
     }
   
     // Method to add a new Category to the library
