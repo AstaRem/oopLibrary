@@ -153,6 +153,36 @@ header {
     background-color: #616b3c;
     cursor: pointer;
   }
+
+  .delete-book-btn {
+    padding: 5px 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 7px;
+    background-color: #d66245;
+    color: white;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    width: 60%;
+    margin: 10px auto;
+  }
+
+  .delete-book-btn:hover, .delete-reader:hover {
+    background-color: #765442;
+  }
+
+  .delete-reader{
+    padding: 3px 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 7px;
+    background-color: #d66245;
+    color: white;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    margin: 10px;
+
+  }
   
   /* Additional styling for the add-btn if needed */
   .add-btn {
@@ -242,10 +272,19 @@ header {
   /* justify-content: space-between; */
   padding: 20px;
   background-color: #EBE8DB;
+
   border-radius: 7px;
   margin-top: 10px;
 
 }
+
+.reader-details {
+  background-color: #fcfbf8;
+  padding-left: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
 
 
 

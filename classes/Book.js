@@ -141,6 +141,7 @@ class Book {
       this._description = description;
       this._is_checked_out = false;
       this._ratings = []; // Store Rating objects related to this book
+      this.borrowedBy = null; // Stores the ID of the reader who borrowed it
     }
   
     // Getters and setters for title
@@ -195,22 +196,19 @@ class Book {
   
     // Methods for checking the book's availability
     checkAvailability() {
-      return !this._is_checked_out;
-    }
+      return this.borrowedBy === null;
+  }
   
     // Method to check out the book if available
-    checkOut() {
-      if (this.checkAvailability()) {
-        this._is_checked_out = true;
-        return true;
-      }
-      return false;
-    }
   
+    checkOut() {
+      this._is_checked_out = true;
+  }
+
     // Method to check in the book (make it available)
     checkIn() {
       this._is_checked_out = false;
-    }
+  }
 
 
     get ratings() {

@@ -15,38 +15,31 @@ class Reader {
     //   return this.name;
     // }
   
-    // set name(newName) {
-    //   this.name = newName;
+    // set name(name) {
+    //   this.name = name;
     // }
+
+  //   get name() {
+  //     return this._name;
+  // }
   
     // Getter for borrowedBooks
-    get borrowedBooks() {
-      return this._borrowedBooks;
-    }
+    // get borrowedBooks() {
+    //   return this._borrowedBooks;
+    // }
   
     // Method to borrow a book if it is available
+  
     borrowBook(book) {
       if (book.checkAvailability()) {
-        // Mark the book as checked out
-        book.checkOut();
-        // Add the book to the reader's borrowed list
         this._borrowedBooks.push(book);
         return true;
       }
       return false;
     }
   
-    // Method to return a borrowed book
     returnBook(book) {
-      const index = this._borrowedBooks.findIndex(b => b.id === book.id);
-      if (index !== -1) {
-        // Mark the book as available
-        book.checkIn();
-        // Remove the book from the borrowed list
-        this._borrowedBooks.splice(index, 1);
-        return true;
-      }
-      return false;
+      this._borrowedBooks = this._borrowedBooks.filter(b => b.id !== book.id);
     }
   }
   
