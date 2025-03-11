@@ -75,33 +75,33 @@ if (!savedLibrary) {
 // Global Borrow/Return Function
 function handleBorrowOrReturnBook(book, action) {
   if (action === 'return') {
-    // If the book is currently borrowed, return it.
-    if (!book.checkAvailability()) {
+  // If the book is currently borrowed, return it.
+  if (!book.checkAvailability()) {
       const reader = ourLibrary.readers.find(r => r.id === book.borrowedBy);
       if (reader) {
-        reader.returnBook(book);   // Remove book from reader's borrowed list
-        book.borrowedBy = null;    // Reset borrower ID
-        book.checkIn();            // Mark as available
+          reader.returnBook(book);   // Remove book from reader's borrowed list
+          book.borrowedBy = null;    // Reset borrower ID
+          book.checkIn();            // Mark as available
       }
-    }
+}
   } else if (action === 'borrow') {
-    // If the book is available, borrow it.
-    const readerName = prompt('Enter the name of the reader borrowing this book:');
-    if (!readerName) return;
-    let reader = ourLibrary.readers.find(r => r.name === readerName);
-    if (!reader) {
-      alert("Reader not found! Make sure the reader is registered.");
-      return;
-    }
-    if (reader.borrowBook(book)) {
-      book.borrowedBy = reader.id; // Save reader ID in the book
-      book.checkOut();             // Mark as borrowed
-    }
+      // If the book is available, borrow it.
+      const readerName = prompt('Enter the name of the reader borrowing this book:');
+      if (!readerName) return;
+      let reader = ourLibrary.readers.find(r => r.name === readerName);
+      if (!reader) {
+          alert("Reader not found! Make sure the reader is registered.");
+          return;
+      }
+      if (reader.borrowBook(book)) {
+          book.borrowedBy = reader.id; // Save reader ID in the book
+book.checkOut();             // Mark as borrowed
+      }
   }
   saveLibrary();
   displayLibrary();
   if (typeof displayReaders === "function") {
-    displayReaders();
+      displayReaders();
   }
 }
 
@@ -196,7 +196,11 @@ function displayLibrary() {
       // Create "Borrow/Return Book" button
       const borrowBtn = document.createElement('button');
       borrowBtn.textContent = book.borrowedBy ? 'Return Book' : 'Borrow Book';
-      borrowBtn.className = 'borrow-btn';
+    if (borrowBtn.textContent == 'Return Book'){
+      borrowBtn.className = 'return-button-in-books';
+    } else if( borrowBtn.className = 'Borow-book'){
+      borrowBtn.className = 'borrow-button-in-books';
+    }
       borrowBtn.addEventListener('click', () => {
         handleBorrowOrReturnBook(book, book.borrowedBy ? 'return' : 'borrow');
       });
@@ -226,7 +230,13 @@ function displayLibrary() {
       details.appendChild(descriptionEl);
 
       const statusEl = document.createElement('p');
-      statusEl.textContent = book.borrowedBy ? 'Status: On loan' : 'Status: Available';
+      statusEl.className = 'status-el';
+      if (book.borrowedBy) {
+        const borrower = ourLibrary.readers.find(r => r.id === book.borrowedBy);
+        statusEl.textContent = `Status: On loan to ${borrower.name}`;
+      } else {
+        statusEl.textContent = 'Status: Available';
+      }
       details.appendChild(statusEl);
 
       card.appendChild(details);
@@ -252,7 +262,6 @@ function displayLibrary() {
   });
 }
 
-
 // ------------------------------
 // Global: Book Deletion Function
 function handleDeleteBook(category, bookId) {
@@ -270,7 +279,7 @@ function handleDeleteBook(category, bookId) {
 // ------------------------------
 // Readers Code (for readers.html)
 if (document.getElementById('readers-display')) {
-  
+
   function handleAddReader(event) {
     event.preventDefault();
     console.log('add reader is clicked');
@@ -288,16 +297,16 @@ if (document.getElementById('readers-display')) {
     saveLibrary();
     displayReaders();
   }
-  
+
   const addReaderForm = document.getElementById('add-reader-form');
   if (addReaderForm) {
     addReaderForm.addEventListener('submit', handleAddReader);
   }
-  
+
   function handleDeleteReader(readerId) {
     const reader = ourLibrary.readers.find(r => r.id === readerId);
     if (!reader) return;
-    
+
     // For all books borrowed by this reader, return them
     ourLibrary.getCategories().forEach(category => {
       category.books.forEach(book => {
@@ -308,13 +317,13 @@ if (document.getElementById('readers-display')) {
         }
       });
     });
-    
+
     ourLibrary.readers = ourLibrary.readers.filter(r => r.id !== readerId);
     saveLibrary();
     displayReaders();
     displayLibrary();
   }
-    
+
   function displayReaders() {
     const readersContainer = document.getElementById('readers-display');
     if (!readersContainer) return;
@@ -328,6 +337,7 @@ if (document.getElementById('readers-display')) {
     const ol = document.createElement('ol');
     ourLibrary.readers.forEach(reader => {
       const li = document.createElement('li');
+      li.className = 'reader-details';
       li.textContent = reader.name;
 
       const borrowedBooks = ourLibrary.getCategories()
@@ -339,15 +349,14 @@ if (document.getElementById('readers-display')) {
         borrowedBooks.forEach(book => {
           const bookLi = document.createElement('li');
           bookLi.textContent = `${book.title} (ISBN: ${book.isbn})`;
-
           const returnBtn = document.createElement('button');
+          returnBtn.className = 'return-button-in-reader';
           returnBtn.textContent = 'Return Book';
           returnBtn.addEventListener('click', () => {
             handleBorrowOrReturnBook(book, 'return');
             displayLibrary(); // Update books display
             displayReaders(); // Update readers display
           });
-
           bookLi.appendChild(returnBtn);
           ul.appendChild(bookLi);
         });
@@ -359,6 +368,7 @@ if (document.getElementById('readers-display')) {
       }
 
       const deleteReaderBtn = document.createElement('button');
+      deleteReaderBtn.className = 'delete-reader-btn';
       deleteReaderBtn.textContent = 'Delete Reader';
       deleteReaderBtn.style.marginLeft = '10px';
       deleteReaderBtn.addEventListener('click', () => {

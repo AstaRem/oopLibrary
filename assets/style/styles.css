@@ -226,11 +226,6 @@ header {
   background-color: #fff;
 }
 
-/* Book image styling */
-.book-card img {
-  width: 100%;
-  height: auto;
-}
 
 /* Book details container */
 .book-details {
@@ -249,6 +244,10 @@ header {
   margin: 5px 0;
   color: #555;
   font-size: 0.9rem;
+}
+
+.status-el {
+  font-weight: 700;
 }
 
 /* Category label styling at the bottom of the card */
@@ -270,7 +269,7 @@ header {
   flex-direction: column; */
   gap: 20px;
   /* justify-content: space-between; */
-  padding: 20px;
+  padding: 40px;
   background-color: #EBE8DB;
 
   border-radius: 7px;
@@ -280,10 +279,73 @@ header {
 
 .reader-details {
   background-color: #fcfbf8;
-  padding-left: 10px;
+  padding: 10px;
   margin: 5px 0;
   border-radius: 5px;
 }
+
+.return-button-in-reader {
+  border: none;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 3px;
+  background-color: #4a5859;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.return-button-in-reader:hover {
+  background-color: #616b3c;
+  cursor: pointer;
+}
+
+.delete-reader-btn {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 7px;
+  background-color: #d66245;
+  color: white;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  margin: 10px auto;
+}
+
+.delete-reader-btn:hover {
+  background-color: #765442;
+}
+
+.return-button-in-books{
+  border: none;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 3px;
+  background-color: #d68c45;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.return-button-in-books:hover{
+  background-color: #765442;
+  cursor: pointer;
+}
+
+.borrow-button-in-books {
+  border: none;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 3px;
+  background-color: #4a5859;
+  color: white;
+  transition: background-color 0.3s ease;
+
+}
+
+.borrow-button-in-books:hover {
+  background-color: #616b3c;
+  cursor: pointer;
+
+}
+
 
 
 
