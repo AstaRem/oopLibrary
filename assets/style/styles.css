@@ -112,6 +112,12 @@ header {
     flex-direction: column;
     gap: 10px;
   }
+
+  /* Filter form*/
+  #filter-section {
+    width: 95%;
+    margin: 20px auto;
+  }
   
   /* Styling for book form */
   .form-book {

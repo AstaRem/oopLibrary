@@ -107,8 +107,11 @@ book.checkOut();             // Mark as borrowed
 
 // ------------------------------
 // Books & Categories Code (for index.html)
+//Ensure that the filter category dropdown is populated when the page loads:
 if (document.getElementById('library-display')) {
   populateCategoriesDropdown();
+  populateFilterCategoryDropdown();
+  displayLibrary();
 
   function handleAddBook(event) {
     event.preventDefault();
@@ -141,7 +144,11 @@ if (document.getElementById('library-display')) {
     const dropdown = document.getElementById('categories');
     if (!dropdown) return;
     dropdown.innerHTML = '';
-    ourLibrary.getCategories().forEach(category => {
+
+    // Sort categories alphabetically by category name
+    const sortedCategories = ourLibrary.getCategories().sort((a, b) => a.categoryName.toLowerCase().localeCompare(b.categoryName.toLowerCase()));
+
+    sortedCategories.forEach(category => {
       const option = document.createElement('option');
       option.value = category.id;
       option.textContent = category.categoryName;
@@ -187,8 +194,28 @@ function displayLibrary() {
   if (!displayContainer) return;
   displayContainer.innerHTML = '';
 
-  ourLibrary.getCategories().forEach(category => {
+  // Get filter values
+  const filterAvailability = document.getElementById('filter-availability').value;
+  const filterCategory = document.getElementById('filter-category').value;
+
+  // Sort categories alphabetically by category name
+  const sortedCategories = ourLibrary.getCategories().sort((a, b) => a.categoryName.toLowerCase().localeCompare(b.categoryName.toLowerCase()));
+
+  sortedCategories.forEach(category => {
+    // Filter by category if selected
+    if (filterCategory !== 'all' && category.id !== Number(filterCategory)) {
+      return;
+    }
+
     category.books.forEach(book => {
+      // Filter by availability
+      if (filterAvailability === 'available' && book.borrowedBy) {
+        return;
+      }
+      if (filterAvailability === 'on-loan' && !book.borrowedBy) {
+        return;
+      }
+
       const card = document.createElement('div');
       card.className = 'book-card';
       card.dataset.bookId = book.id;
@@ -196,11 +223,7 @@ function displayLibrary() {
       // Create "Borrow/Return Book" button
       const borrowBtn = document.createElement('button');
       borrowBtn.textContent = book.borrowedBy ? 'Return Book' : 'Borrow Book';
-    if (borrowBtn.textContent == 'Return Book'){
-      borrowBtn.className = 'return-button-in-books';
-    } else if( borrowBtn.className = 'Borow-book'){
-      borrowBtn.className = 'borrow-button-in-books';
-    }
+      borrowBtn.className = book.borrowedBy ? 'return-button-in-books' : 'borrow-button-in-books';
       borrowBtn.addEventListener('click', () => {
         handleBorrowOrReturnBook(book, book.borrowedBy ? 'return' : 'borrow');
       });
@@ -385,6 +408,27 @@ if (document.getElementById('readers-display')) {
   }
   
   displayReaders();
+}
+
+document.getElementById('filter-form').addEventListener('submit', (event) => {
+  event.preventDefault();
+  displayLibrary();
+});
+
+function populateFilterCategoryDropdown() {
+  const dropdown = document.getElementById('filter-category');
+  if (!dropdown) return;
+  dropdown.innerHTML = '<option value="all">All</option>';
+
+  // Sort categories alphabetically by category name
+  const sortedCategories = ourLibrary.getCategories().sort((a, b) => a.categoryName.toLowerCase().localeCompare(b.categoryName.toLowerCase()));
+
+  sortedCategories.forEach(category => {
+    const option = document.createElement('option');
+    option.value = category.id;
+    option.textContent = category.categoryName;
+    dropdown.appendChild(option);
+  });
 }
 
 // Export ourLibrary and saveLibrary if needed externally
