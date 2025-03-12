@@ -65,13 +65,17 @@ let ourLibrary = savedLibrary ? savedLibrary : new Library('A_R_A biblioteka');
 console.log(`Biblioteka ${ourLibrary._library} sukurta`);
 
 // If there was no saved library, create initial categories
-if (!savedLibrary) {
-  const fictionCategory = new Category('Fiction');
-  const nonFictionCategory = new Category('Non-Fiction');
-  ourLibrary.addCategory(fictionCategory);
-  ourLibrary.addCategory(nonFictionCategory);
-  saveLibrary();
-}
+// if (!savedLibrary) {
+//   const fictionCategory = new Category('Fiction');
+//   const nonFictionCategory = new Category('Non-Fiction');
+//   const uncategorizedCategory = new Category('Uncategorized'); // Default category
+//   ourLibrary.addCategory(fictionCategory);
+//   ourLibrary.addCategory(nonFictionCategory);
+//   ourLibrary.addCategory(uncategorizedCategory); // Add default category
+//   saveLibrary();  
+// }
+
+// console.log(ourLibrary.getCategories());
 
 // ------------------------------
 // Global Borrow/Return Function
@@ -183,6 +187,7 @@ if (document.getElementById('library-display')) {
     event.target.reset();
     saveLibrary();
     displayLibrary();
+    populateFilterCategoryDropdown();
   }
 
   const addCategoryForm = document.getElementById('add-category-form');
@@ -329,6 +334,21 @@ function handleDeleteCategory(categoryId) {
   // Find the index of the category to delete in ourLibrary
   const index = ourLibrary._categories.findIndex(cat => cat.id === categoryId);
   if (index !== -1) {
+    // Get the category to delete
+    const categoryToDelete = ourLibrary._categories[index];
+    
+    // Find the default category (Uncategorized)
+    const defaultCategory = ourLibrary._categories.find(cat => cat.categoryName === 'Uncategorized');
+    if (!defaultCategory) {
+      alert('Default category "Uncategorized" not found!');
+      return;
+    }
+
+    // Move books to the default category
+    categoryToDelete.books.forEach(book => {
+      defaultCategory.addBook(book);
+    });
+
     // Remove the category from the library
     ourLibrary._categories.splice(index, 1);
     
@@ -414,8 +434,11 @@ if (document.getElementById('readers-display')) {
       return;
     }
 
+    // Sort readers alphabetically by name
+    const sortedReaders = ourLibrary.readers.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+
     const ol = document.createElement('ol');
-    ourLibrary.readers.forEach(reader => {
+    sortedReaders.forEach(reader => {
       const li = document.createElement('li');
       li.className = 'reader-details';
       li.textContent = reader.name;
@@ -487,6 +510,9 @@ function populateFilterCategoryDropdown() {
     dropdown.appendChild(option);
   });
 }
+
+console.log(ourLibrary.getCategories());
+
 
 // Export ourLibrary and saveLibrary if needed externally
 export { ourLibrary, saveLibrary };
