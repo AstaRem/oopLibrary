@@ -310,7 +310,7 @@ function displayCategories() {
 
     // Create a Delete Button for the category
     const deleteBtn = document.createElement('button');
-    deleteBtn.textContent = 'Delete Category';
+    deleteBtn.textContent = 'Delete';
     deleteBtn.className = 'delete-category-btn';
     deleteBtn.style.marginLeft = '10px';
     deleteBtn.addEventListener('click', () => {

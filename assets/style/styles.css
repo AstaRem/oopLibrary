@@ -86,7 +86,7 @@ header {
 /* main start */
 /* General container styling */
 #library, .readers-container {
-    max-width: 800px;
+    max-width: 80%;
     margin: 0 auto;
     padding: 20px;
   }
@@ -97,6 +97,20 @@ header {
     flex-direction: column;
     gap: 20px;
   }
+
+  .books-and-categories-container {
+    display: flex;
+    justify-content: center;
+    gap:  20px;
+    
+  }
+
+  .books-and-categories-container > .form-container, 
+  .books-and-categories-container > .existing-categories-display {
+    flex: 1;
+  } 
+
+
   
   /* Basic form styling */
   .form {
@@ -160,7 +174,10 @@ header {
     cursor: pointer;
   }
 
-  .delete-book-btn {
+  .apply-book-filters {
+    margin-top: 10px;
+  }
+  .delete-book-btn, .delete-category-btn {
     padding: 5px 10px;
     font-size: 1rem;
     border: none;
@@ -173,8 +190,12 @@ header {
     margin: 10px auto;
   }
 
-  .delete-book-btn:hover, .delete-reader:hover {
+  .delete-book-btn:hover, .delete-reader:hover, .delete-category-btn:hover {
     background-color: #765442;
+  }
+
+  .delete-category-btn {
+    width: 70px;
   }
 
   .delete-reader{
@@ -264,6 +285,18 @@ header {
   font-weight: 600;
   border-top: 1px solid #ccc;
 }
+
+.delete-category-content {
+  background-color: white;
+  padding:  5px;
+  border-radius: 7px;
+  padding-left: 20px;
+}
+
+#category-list {
+  margin-top: 10px;
+}
+
 
 /* readers */
 
