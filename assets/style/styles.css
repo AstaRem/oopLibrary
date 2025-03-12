@@ -3,108 +3,366 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     font-family: "Nunito Sans", serif;
 }
+
+body {
+  background-color: #A8ADA6;
+
+}
+
 .wrapper {
     height: 100%;
     width: 100%; 
-    background-color: #A8ADA6;
-    /* display: flex; */
+    display: flex;
+    flex-direction: column;
 
 }
 /* general end */
 
 /* header start */
-header{
+
+/* Header styling */
+header {
     background: #818580;
     display: flex;
-    justify-content: flex-start;
-    
-}
-
-.logo {
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+  }
+  
+  /* Logo and library name container */
+  .logo-div {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
     width: 150px;
-    padding: 20px 20px 10px 20px;
-}
-
-.library-name {
+    margin-right: 20px;
+  }
+  
+  .library-name {
     color: white;
     font-weight: 600;
     font-size: 32px;
-    text-align: center;
-    padding-bottom: 10px;
-}
-
-.top-nav {
-    width: 100%;
-    margin-left: 120px;
-    display: flex; 
-    align-items: center;
-}
-.top-nav-list {
-    height: 100%;
-    width: 50%;
+    margin: 0;
+  }
+  
+  /* Navigation styling */
+  .top-nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .top-nav-list {
     list-style-type: none;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-
-}
-
-.top-nav-item {
-    padding: 10px 20px;
-    height: 30px;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .top-nav-item {
     background-color: #EBE8DB;
     border-radius: 7px;
+    padding: 10px 20px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.top-nav-list a {
-    display: block;
+    align-items: center;
+  }
+  
+  .top-nav-item a {
     text-decoration: none;
-    color:black;
-
-}
-
+    color: black;
+    font-weight: 500;
+    display: block;
+  }
+  
 /* header end */
 
 
-/* forms start */
-.form{
-    display: flex;
-    margin:10px;
-}
-
-.btn {
-    display: block;
-    margin-left: 5px;
-    margin-right: 5px;
-}
-
-.search-glass-div{
-    width: 20px;
-}
-
-.search-glass-div img {
-    width: 100%;
-}
-
-.book-search-form {
-    margin-bottom: 20px;
-    background-color: #929690;
-}
-
-.categories-div{
+/* main start */
+/* General container styling */
+#library, .readers-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Form container to separate the two forms nicely */
+  .form-container {
     display: flex;
     flex-direction: column;
-    padding:10px;
+    gap: 20px;
+  }
+  
+  /* Basic form styling */
+  .form {
+    background: #ebe8db;
+    padding: 15px;
+    border-radius: 7px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  /* Specific styling for category form if needed */
+  .form-category {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* Filter form*/
+  #filter-section {
+    width: 95%;
+    margin: 20px auto;
+  }
+  
+  /* Styling for book form */
+  .form-book {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Input and select styling */
+  input[type="text"],
+  input[type="number"],
+  select {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Label styling */
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  /* Button styling */
+  .btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 7px;
+    background-color: #4a5859;
+    color: white;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #616b3c;
+    cursor: pointer;
+  }
+
+  .delete-book-btn {
+    padding: 5px 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 7px;
+    background-color: #d66245;
+    color: white;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    width: 60%;
+    margin: 10px auto;
+  }
+
+  .delete-book-btn:hover, .delete-reader:hover {
+    background-color: #765442;
+  }
+
+  .delete-reader{
+    padding: 3px 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 7px;
+    background-color: #d66245;
+    color: white;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    margin: 10px;
+
+  }
+  
+  /* Additional styling for the add-btn if needed */
+  .add-btn {
+    align-self: flex-start;
+  }
+  
+  /* Arrange book inputs in a column with spacing */
+  .book-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  /* Categories dropdown styling */
+  .categories-div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  /*main end  */
+
+
+/* Container for book cards */
+#library-display {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
 }
 
-#categories {
-    height: 100%;
+/* Book card styling */
+.book-card {
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  overflow: hidden;
+  width: 250px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
 }
-/* forms end */
+
+
+/* Book details container */
+.book-details {
+  padding: 10px;
+  flex-grow: 1;
+}
+
+/* Title and details styling */
+.book-details h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.book-details p {
+  margin: 5px 0;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.status-el {
+  font-weight: 700;
+}
+
+/* Category label styling at the bottom of the card */
+.book-category-label {
+  background-color: #EBE8DB;
+  text-align: center;
+  padding: 5px;
+  font-weight: 600;
+  border-top: 1px solid #ccc;
+}
+
+/* readers */
+
+
+/* readers display */
+
+#readers-display{
+  /* display: flex;
+  flex-direction: column; */
+  gap: 20px;
+  /* justify-content: space-between; */
+  padding: 40px;
+  background-color: #EBE8DB;
+
+  border-radius: 7px;
+  margin-top: 10px;
+
+}
+
+.reader-details {
+  background-color: #fcfbf8;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+.return-button-in-reader {
+  border: none;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 3px;
+  background-color: #4a5859;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.return-button-in-reader:hover {
+  background-color: #616b3c;
+  cursor: pointer;
+}
+
+.delete-reader-btn {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 7px;
+  background-color: #d66245;
+  color: white;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  margin: 10px auto;
+}
+
+.delete-reader-btn:hover {
+  background-color: #765442;
+}
+
+.return-button-in-books{
+  border: none;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 3px;
+  background-color: #d68c45;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.return-button-in-books:hover{
+  background-color: #765442;
+  cursor: pointer;
+}
+
+.borrow-button-in-books {
+  border: none;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 3px;
+  background-color: #4a5859;
+  color: white;
+  transition: background-color 0.3s ease;
+
+}
+
+.borrow-button-in-books:hover {
+  background-color: #616b3c;
+  cursor: pointer;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+/* old ------------------------------------------------------- */
 
 /* Books container start*/
 .subtitle{
@@ -148,9 +406,12 @@ margin-left: 20px;
 
 /* footer start */
 footer{
+    width: 100%;
     height: 30px;
-    padding: 30px 20px; 
+    padding: 30px 20px ; 
     background-color: #929690;
+    /* position: absolute;
+    bottom: 30px; */
     
 }
 /* footer end */
@@ -161,14 +422,17 @@ footer{
 /* spalvu pasirinkimai */
 /* klasiu pavadinimai samoningai lietuviski, nes visa tai istrinsiu  */
 .spalvu-tekstas {
-    margin-top: 20px;
-    margin-left: 20px;
+    padding-top: 20px;
+    padding-left: 20px;
+    background-color: #A8ADA6;
+
 }
 
 .spalvu-konteineris{
-    margin-top: 10px;
+    padding-top: 10px;
     display: flex;
-    justify-content: space-around;
+    justify-content: end;
+    background-color: #A8ADA6;
     /* padding: 20px; */
 
 }

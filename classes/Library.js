@@ -5,46 +5,62 @@
 // Metodai:
 // Geteriai, seteriai
 
+import Category from './Category.js';
 
-// nauja kategorija kuria Library klase
 class Library {
-    #categories = [];
-    #categoryId = 0;
-
-    constructor (library){
-        this.library = library;
+    constructor(library) {
+        this._library = library;
+      // Array to store Category objects
+      this._categories = [];
+    // Array to store Reader objects
+      this.readers =[];
+    }
+  
+    // Method to add a new Category to the library
+    addCategory(category) {
+      this._categories.push(category);
     }
 
-    setCategory(category){
-        this.#categoryId += 1;
-        this.id = this.#categoryId;
-        let newCategory = new Category(this.id, category);
-        this.#categories.push(newCategory);
+    // Method to add a new Reader to the library
+    addReader(reader) {
+      this._readers.push(reader);
     }
 
-    getCategories(){
-        return this.#categories;
+  
+    // Method to retrieve all categories
+    getCategories() {
+      return this._categories;
     }
 
-}
-
-
-
-// testavimui:
-class Category{
-    constructor(id, categoryName){
-        this.id = id;
-        this.category = categoryName;
+    getReaders(){
+        return this._readers;
     }
-}
+  
+    // Example method: Generate HTML to display the library's categories and books.
+    // This can be expanded as needed.
+    generateHTML() {
+      let htmlContent = '';
+  
+      this._categories.forEach(category => {
+        htmlContent += `<div class="category">
+                          <h2>${category.categoryName}</h2>
+                          <ul>`;
+        // Assume each category has a 'books' array
+        category.books.forEach(book => {
+          htmlContent += `<li>${book.title} by ${book.author}</li>`;
+        });
+        htmlContent += `</ul>
+                        </div>`;
+      });
+  
+      return htmlContent;
+    }
+  }
+  
+  // Example of instantiating the Library object (if you want this file to bootstrap your app)
+  // const myLibrary = new Library();
+  // window.myLibrary = myLibrary; // Making it global if needed for testing in the console
+  
 
+export default Library;
 
-let pietinioBiblioteka = new Library("pietinio biblioteka")
-console.log(pietinioBiblioteka);
-pietinioBiblioteka.setCategory("poezija");
-pietinioBiblioteka.setCategory("grozine literatura");
-pietinioBiblioteka.setCategory("keliones");
-
-
-let kategorijos = pietinioBiblioteka.getCategories();
-console.log(kategorijos);
