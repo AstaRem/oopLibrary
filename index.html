@@ -36,6 +36,8 @@
 
             <main>
                 <div id="library">
+
+                  <div class="books-and-categories-container">
                   <!-- Container for both forms -->
                   <div class="form-container">
                     <!-- Add Category Form -->
@@ -44,15 +46,17 @@
                       <input type="text" id="add-category-name" placeholder="Enter new category" required>
                       <button type="submit" class="btn">Add Category</button>
                     </form>
+
                     
                     <!-- Add Book Form -->
                     <form id="add-book-form" class="form form-book">
                       <div class="categories-div">
                         <label for="categories">Choose the existing category:</label>
-                        <select id="categories" name="book-category" multiple>
+                        <select id="categories" name="book-category" multiple required>
                           <!-- Options populated via JS -->
                         </select>
                       </div>
+
                       <div class="book-inputs">
                         <input type="text" id="add-book-title" placeholder="Add title" required>
                         <input type="text" id="add-book-author" placeholder="Add author" required>
@@ -64,7 +68,19 @@
                         Click to add new book to Library
                       </button>
                     </form>
+
                   </div>
+
+                  <div class="existing-categories-display form">
+                    <div class="delete-category-content">
+                      <h3>Delete category</h3>
+                      <div id="category-list">
+
+                    </div>
+                    </div>
+                  </div>
+                </div>
+
                 </div>
 
 <!-- Filter Section -->
@@ -82,7 +98,7 @@
                       <option value="all">All</option>
                       <!-- Options populated via JS -->
                     </select>
-                    <button type="submit" class="btn">Apply Filters</button>
+                    <button type="submit" class="btn apply-book-filters">Apply Filters</button>
                   </form>
                 </div>
 

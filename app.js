@@ -5,6 +5,8 @@ import Reader from './classes/Reader.js';
 import Rating from './classes/Rating.js';
 
 // ------------------------------
+
+let globalPopulateCategoriesDropdown;
 // Shared Library & Local Storage Functions
 
 function saveLibrary() {
@@ -63,13 +65,17 @@ let ourLibrary = savedLibrary ? savedLibrary : new Library('A_R_A biblioteka');
 console.log(`Biblioteka ${ourLibrary._library} sukurta`);
 
 // If there was no saved library, create initial categories
-if (!savedLibrary) {
-  const fictionCategory = new Category('Fiction');
-  const nonFictionCategory = new Category('Non-Fiction');
-  ourLibrary.addCategory(fictionCategory);
-  ourLibrary.addCategory(nonFictionCategory);
-  saveLibrary();
-}
+// if (!savedLibrary) {
+//   const fictionCategory = new Category('Fiction');
+//   const nonFictionCategory = new Category('Non-Fiction');
+//   const uncategorizedCategory = new Category('Uncategorized'); // Default category
+//   ourLibrary.addCategory(fictionCategory);
+//   ourLibrary.addCategory(nonFictionCategory);
+//   ourLibrary.addCategory(uncategorizedCategory); // Add default category
+//   saveLibrary();  
+// }
+
+// console.log(ourLibrary.getCategories());
 
 // ------------------------------
 // Global Borrow/Return Function
@@ -112,6 +118,8 @@ if (document.getElementById('library-display')) {
   populateCategoriesDropdown();
   populateFilterCategoryDropdown();
   displayLibrary();
+  displayCategories(); // Calling displayCategories on page load
+
 
   function handleAddBook(event) {
     event.preventDefault();
@@ -154,6 +162,7 @@ if (document.getElementById('library-display')) {
       option.textContent = category.categoryName;
       dropdown.appendChild(option);
     });
+    globalPopulateCategoriesDropdown = populateCategoriesDropdown;
   }
 
   function handleAddCategory(event) {
@@ -174,9 +183,11 @@ if (document.getElementById('library-display')) {
     ourLibrary.addCategory(newCategory);
     alert(`Category "${newCategoryName}" added successfully!`);
     populateCategoriesDropdown();
+    displayCategories(); // Call displayCategories after adding a category
     event.target.reset();
     saveLibrary();
     displayLibrary();
+    populateFilterCategoryDropdown();
   }
 
   const addCategoryForm = document.getElementById('add-category-form');
@@ -285,6 +296,72 @@ function displayLibrary() {
   });
 }
 
+// Display and delete category
+function displayCategories() {
+  const categoryContainer = document.getElementById('category-list');
+  console.log(categoryContainer)
+  if (!categoryContainer) return;
+  categoryContainer.innerHTML = '';
+
+  // Sort categories alphabetically
+  const sortedCategories = ourLibrary.getCategories().sort((a, b) =>
+    a.categoryName.toLowerCase().localeCompare(b.categoryName.toLowerCase())
+  );
+
+  sortedCategories.forEach(category => {
+    const categoryDiv = document.createElement('div');
+    categoryDiv.className = 'category-item';
+    categoryDiv.textContent = category.categoryName;
+
+    // Create a Delete Button for the category
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = 'Delete';
+    deleteBtn.className = 'delete-category-btn';
+    deleteBtn.style.marginLeft = '10px';
+    deleteBtn.addEventListener('click', () => {
+      if (confirm(`Are you sure you want to delete the category "${category.categoryName}"?`)) {
+        handleDeleteCategory(category.id);
+      }
+    });
+
+    categoryDiv.appendChild(deleteBtn);
+    categoryContainer.appendChild(categoryDiv);
+  });
+}
+
+
+function handleDeleteCategory(categoryId) {
+  // Find the index of the category to delete in ourLibrary
+  const index = ourLibrary._categories.findIndex(cat => cat.id === categoryId);
+  if (index !== -1) {
+    // Get the category to delete
+    const categoryToDelete = ourLibrary._categories[index];
+    
+    // Find the default category (Uncategorized)
+    const defaultCategory = ourLibrary._categories.find(cat => cat.categoryName === 'Uncategorized');
+    if (!defaultCategory) {
+      alert('Default category "Uncategorized" not found!');
+      return;
+    }
+
+    // Move books to the default category
+    categoryToDelete.books.forEach(book => {
+      defaultCategory.addBook(book);
+    });
+
+    // Remove the category from the library
+    ourLibrary._categories.splice(index, 1);
+    
+    // Update dropdowns and displays (if these lists are used elsewhere)
+    globalPopulateCategoriesDropdown();
+    populateFilterCategoryDropdown();
+    saveLibrary();
+    displayLibrary();
+    displayCategories(); // Refresh the category list display
+  }
+}
+
+
 // ------------------------------
 // Global: Book Deletion Function
 function handleDeleteBook(category, bookId) {
@@ -357,8 +434,11 @@ if (document.getElementById('readers-display')) {
       return;
     }
 
+    // Sort readers alphabetically by name
+    const sortedReaders = ourLibrary.readers.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+
     const ol = document.createElement('ol');
-    ourLibrary.readers.forEach(reader => {
+    sortedReaders.forEach(reader => {
       const li = document.createElement('li');
       li.className = 'reader-details';
       li.textContent = reader.name;
@@ -430,6 +510,9 @@ function populateFilterCategoryDropdown() {
     dropdown.appendChild(option);
   });
 }
+
+console.log(ourLibrary.getCategories());
+
 
 // Export ourLibrary and saveLibrary if needed externally
 export { ourLibrary, saveLibrary };
