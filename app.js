@@ -5,6 +5,8 @@ import Reader from './classes/Reader.js';
 import Rating from './classes/Rating.js';
 
 // ------------------------------
+
+let globalPopulateCategoriesDropdown;
 // Shared Library & Local Storage Functions
 
 function saveLibrary() {
@@ -112,6 +114,8 @@ if (document.getElementById('library-display')) {
   populateCategoriesDropdown();
   populateFilterCategoryDropdown();
   displayLibrary();
+  displayCategories(); // Calling displayCategories on page load
+
 
   function handleAddBook(event) {
     event.preventDefault();
@@ -154,6 +158,7 @@ if (document.getElementById('library-display')) {
       option.textContent = category.categoryName;
       dropdown.appendChild(option);
     });
+    globalPopulateCategoriesDropdown = populateCategoriesDropdown;
   }
 
   function handleAddCategory(event) {
@@ -174,6 +179,7 @@ if (document.getElementById('library-display')) {
     ourLibrary.addCategory(newCategory);
     alert(`Category "${newCategoryName}" added successfully!`);
     populateCategoriesDropdown();
+    displayCategories(); // Call displayCategories after adding a category
     event.target.reset();
     saveLibrary();
     displayLibrary();
@@ -284,6 +290,57 @@ function displayLibrary() {
     });
   });
 }
+
+// Display and delete category
+function displayCategories() {
+  const categoryContainer = document.getElementById('category-list');
+  console.log(categoryContainer)
+  if (!categoryContainer) return;
+  categoryContainer.innerHTML = '';
+
+  // Sort categories alphabetically
+  const sortedCategories = ourLibrary.getCategories().sort((a, b) =>
+    a.categoryName.toLowerCase().localeCompare(b.categoryName.toLowerCase())
+  );
+
+  sortedCategories.forEach(category => {
+    const categoryDiv = document.createElement('div');
+    categoryDiv.className = 'category-item';
+    categoryDiv.textContent = category.categoryName;
+
+    // Create a Delete Button for the category
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = 'Delete Category';
+    deleteBtn.className = 'delete-category-btn';
+    deleteBtn.style.marginLeft = '10px';
+    deleteBtn.addEventListener('click', () => {
+      if (confirm(`Are you sure you want to delete the category "${category.categoryName}"?`)) {
+        handleDeleteCategory(category.id);
+      }
+    });
+
+    categoryDiv.appendChild(deleteBtn);
+    categoryContainer.appendChild(categoryDiv);
+  });
+}
+
+
+function handleDeleteCategory(categoryId) {
+  // Find the index of the category to delete in ourLibrary
+  const index = ourLibrary._categories.findIndex(cat => cat.id === categoryId);
+  if (index !== -1) {
+    // Remove the category from the library
+    ourLibrary._categories.splice(index, 1);
+    
+    // Update dropdowns and displays (if these lists are used elsewhere)
+    globalPopulateCategoriesDropdown();
+    populateFilterCategoryDropdown();
+    saveLibrary();
+    displayLibrary();
+    displayCategories(); // Refresh the category list display
+  }
+}
+
 
 // ------------------------------
 // Global: Book Deletion Function
