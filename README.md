@@ -1,6 +1,9 @@
-# 📚 Library Management System
+# 📚 Library Management System v 1.0
 
 Welcome to the **Library Management System**! This project allows users to manage books, categories, and readers in a simple, interactive library environment. It includes features for adding, borrowing, returning, and deleting books, along with managing book categories and registered readers.
+---
+### Version 1.0 note
+At this stage all the information the user enters, webapp is saving to local stocage on user's browser. Therefore, to test the app, please enter your categories, book information and reader names.
 
 ---
 
@@ -45,12 +48,33 @@ The system allows you to filter books by availability and category. You can easi
 - **Return Books:** Return a borrowed book and update the system accordingly.
 - **Delete Books:** You can delete books from the library system if necessary.
 
+### Categories Management
+
+- **Add new category**
+- **Delete existing category** Once the existing category is deleted, all the books from this category get reassigned to 'Uncategorized' category.
+
+### Readers Management
+
+- **Add new reader**
+- **Delete existing reader**
+
+
 ---
+
+## Further steps -  notes for version 2
+- Implement the user input validation 
+- Filter books by author, name, price, ISBN number
+- Option to sort books alphabetically by author/name/price in ascending/descending order
+- Find reader by name
+- Filter readers with the books
+- Implement extra security step in order to delete category 'Undefined'/ or not possible to delete
+- Do no allow to delete the reader who have books on loan
 
 ## 🎉 Project Team 🎉
 
 ### The following people worked on this project:
 
-- **Asta Remeikienė** 
-- **Robertas Tilūnas** 
-- **Arnas Jankūnas**
+- **[Asta Remeikienė](https://github.com/AstaRem)** 
+- **[Robertas Tilūnas](https://github.com/tilrob)** 
+- **[Arnas Jankūnas](https://github.com/ArnasJ-git)** 
+
