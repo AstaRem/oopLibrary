@@ -21,6 +21,7 @@ body {
 }
 /* general end */
 
+/* ----------------------------------------------- */
 /* header start */
 
 /* Header styling */
@@ -91,7 +92,7 @@ header {
     padding: 20px;
   }
   
-  /* Form container to separate the two forms nicely */
+  /* Form container to separate the two forms */
   .form-container {
     display: flex;
     flex-direction: column;
@@ -297,8 +298,9 @@ header {
   margin-top: 10px;
 }
 
+/* ------------------------------------------ */
 
-/* readers */
+/* readers page */
 
 
 /* readers display */
@@ -387,73 +389,20 @@ header {
 
 
 
-
-
-
-
-
-
-
-
-/* old ------------------------------------------------------- */
-
-/* Books container start*/
-.subtitle{
-font-size: 24px;
-color: white;
-padding: 10px 0;
-margin-left: 20px;
-}
-
-.books-div {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: auto auto auto;
-    margin: 0 20px;
-}
-
-/* one book card */
-
-.one-book-card {
-    /* width: 200px;
-    height: 300px; */
-    display: flex;
-    background-color: #EBE8D8;
-    padding: 20px;
-    border-radius: 7px;
-
-
-}
-.book-img-div {
-    width: 100px;
-}
-
-.book-img-div img {
-    width: 100%;
-}
-
-.book-details-div {
-    margin-left: 20px;
-}
-/* books container end */
-
 /* footer start */
 footer{
     width: 100%;
     height: 30px;
-    padding: 30px 20px ; 
-    background-color: #929690;
-    /* position: absolute;
-    bottom: 30px; */
-    
+    padding: 30px 20px 40px 20px ; 
+    background-color: #929690; 
 }
+
 /* footer end */
 
 /* ------------------------------------------------------------------------ */
 
 
-/* spalvu pasirinkimai */
-/* klasiu pavadinimai samoningai lietuviski, nes visa tai istrinsiu  */
+/* the color choices which might be useful in further development */
 .spalvu-tekstas {
     padding-top: 20px;
     padding-left: 20px;

@@ -1,10 +1,3 @@
-// Library Klasė
-// Aprašymas: Klasė, kuri saugo visas kategorijas ir yra atsakinga už bibliotekos valdymą.
-// Savybės:
-// categories: masyvas, kuriame saugomos kategorijos objektai.
-// Metodai:
-// Geteriai, seteriai
-
 import Category from './Category.js';
 
 class Library {
@@ -37,7 +30,6 @@ class Library {
     }
   
     // Example method: Generate HTML to display the library's categories and books.
-    // This can be expanded as needed.
     generateHTML() {
       let htmlContent = '';
   
@@ -56,10 +48,6 @@ class Library {
       return htmlContent;
     }
   }
-  
-  // Example of instantiating the Library object (if you want this file to bootstrap your app)
-  // const myLibrary = new Library();
-  // window.myLibrary = myLibrary; // Making it global if needed for testing in the console
   
 
 export default Library;

@@ -64,50 +64,38 @@ let savedLibrary = loadLibrary();
 let ourLibrary = savedLibrary ? savedLibrary : new Library('A_R_A biblioteka');
 console.log(`Biblioteka ${ourLibrary._library} sukurta`);
 
-// If there was no saved library, create initial categories
-// if (!savedLibrary) {
-//   const fictionCategory = new Category('Fiction');
-//   const nonFictionCategory = new Category('Non-Fiction');
-//   const uncategorizedCategory = new Category('Uncategorized'); // Default category
-//   ourLibrary.addCategory(fictionCategory);
-//   ourLibrary.addCategory(nonFictionCategory);
-//   ourLibrary.addCategory(uncategorizedCategory); // Add default category
-//   saveLibrary();  
-// }
-
-// console.log(ourLibrary.getCategories());
 
 // ------------------------------
 // Global Borrow/Return Function
 function handleBorrowOrReturnBook(book, action) {
   if (action === 'return') {
-  // If the book is currently borrowed, return it.
-  if (!book.checkAvailability()) {
+    // If the book is currently borrowed, return it.
+    if (!book.checkAvailability()) {
       const reader = ourLibrary.readers.find(r => r.id === book.borrowedBy);
       if (reader) {
-          reader.returnBook(book);   // Remove book from reader's borrowed list
-          book.borrowedBy = null;    // Reset borrower ID
-          book.checkIn();            // Mark as available
+        reader.returnBook(book);   // Remove book from reader's borrowed list
+        book.borrowedBy = null;    // Reset borrower ID
+        book.checkIn();            // Mark as available
       }
-}
+    }
   } else if (action === 'borrow') {
-      // If the book is available, borrow it.
-      const readerName = prompt('Enter the name of the reader borrowing this book:');
-      if (!readerName) return;
-      let reader = ourLibrary.readers.find(r => r.name === readerName);
-      if (!reader) {
-          alert("Reader not found! Make sure the reader is registered.");
-          return;
-      }
-      if (reader.borrowBook(book)) {
-          book.borrowedBy = reader.id; // Save reader ID in the book
-book.checkOut();             // Mark as borrowed
-      }
+    // If the book is available, borrow it.
+    const readerName = prompt('Enter the name of the reader borrowing this book:');
+    if (!readerName) return;
+    let reader = ourLibrary.readers.find(r => r.name === readerName);
+    if (!reader) {
+      alert("Reader not found! Make sure the reader is registered.");
+      return;
+    }
+    if (reader.borrowBook(book)) {
+      book.borrowedBy = reader.id; // Save reader ID in the book
+      book.checkOut();             // Mark as borrowed
+    }
   }
   saveLibrary();
   displayLibrary();
   if (typeof displayReaders === "function") {
-      displayReaders();
+    displayReaders();
   }
 }
 
@@ -196,7 +184,7 @@ if (document.getElementById('library-display')) {
   }
 
   // Function to generate HTML for the library display (books)
-  
+
   displayLibrary();
 }
 
@@ -230,7 +218,7 @@ function displayLibrary() {
       const card = document.createElement('div');
       card.className = 'book-card';
       card.dataset.bookId = book.id;
-      
+
       // Create "Borrow/Return Book" button
       const borrowBtn = document.createElement('button');
       borrowBtn.textContent = book.borrowedBy ? 'Return Book' : 'Borrow Book';
@@ -239,7 +227,7 @@ function displayLibrary() {
         handleBorrowOrReturnBook(book, book.borrowedBy ? 'return' : 'borrow');
       });
       card.appendChild(borrowBtn);
-      
+
       const details = document.createElement('div');
       details.className = 'book-details';
 
@@ -336,7 +324,7 @@ function handleDeleteCategory(categoryId) {
   if (index !== -1) {
     // Get the category to delete
     const categoryToDelete = ourLibrary._categories[index];
-    
+
     // Find the default category (Uncategorized)
     const defaultCategory = ourLibrary._categories.find(cat => cat.categoryName === 'Uncategorized');
     if (!defaultCategory) {
@@ -351,7 +339,7 @@ function handleDeleteCategory(categoryId) {
 
     // Remove the category from the library
     ourLibrary._categories.splice(index, 1);
-    
+
     // Update dropdowns and displays (if these lists are used elsewhere)
     globalPopulateCategoriesDropdown();
     populateFilterCategoryDropdown();
@@ -413,7 +401,6 @@ if (document.getElementById('readers-display')) {
         if (book.borrowedBy === reader.id) {
           reader.returnBook(book);
           book.borrowedBy = null;
-          // No need to call book.checkIn() if we rely on borrowedBy.
         }
       });
     });
@@ -486,7 +473,7 @@ if (document.getElementById('readers-display')) {
 
     readersContainer.appendChild(ol);
   }
-  
+
   displayReaders();
 }
 

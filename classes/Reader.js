@@ -10,23 +10,6 @@ class Reader {
       this._borrowedBooks = [];
     }
   
-    // Getter and setter for the reader's name
-    // get name() {
-    //   return this.name;
-    // }
-  
-    // set name(name) {
-    //   this.name = name;
-    // }
-
-  //   get name() {
-  //     return this._name;
-  // }
-  
-    // Getter for borrowedBooks
-    // get borrowedBooks() {
-    //   return this._borrowedBooks;
-    // }
   
     // Method to borrow a book if it is available
   

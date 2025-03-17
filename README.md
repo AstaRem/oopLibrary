@@ -68,6 +68,7 @@ The system allows you to filter books by availability and category. You can easi
 - Find reader by name
 - Filter readers with the books
 - Implement extra security step in order to delete category 'Undefined'/ or not possible to delete
+- If the book belongs to Uncategorized', make an option to assign the category
 - Do no allow to delete the reader who have books on loan
 
 ## 🎉 Project Team 🎉
